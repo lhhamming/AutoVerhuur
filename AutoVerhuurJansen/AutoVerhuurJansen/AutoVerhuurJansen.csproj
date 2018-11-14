@@ -270,6 +270,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\audi.png" />
+    <Content Include="img\bmw.jpg" />
+    <Content Include="img\Porsche.png" />
     <Content Include="Models\JansenModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JansenModel.edmx</DependentUpon>
