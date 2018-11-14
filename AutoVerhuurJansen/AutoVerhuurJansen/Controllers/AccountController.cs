@@ -214,12 +214,12 @@ namespace AutoVerhuurJansen.Controllers
                     var Medewerker = new Medewerkers { };
                     if (model.TussenVoegsel != "")
                     {
-                        Medewerker = new Medewerkers { voornaam = model.FirstName, tussenvoegsel = "", achternaam = model.LastName, afkorting = "A+B", actief = false, AspNetUserID = user.Id };
+                        Medewerker = new Medewerkers { voornaam = model.FirstName, tussenvoegsel = "", achternaam = model.LastName, afkorting = "A+B", Actief = false, AspNetUserID = user.Id };
 
                     }
                     else
                     {
-                        Medewerker = new Medewerkers { voornaam = model.FirstName, tussenvoegsel = model.TussenVoegsel, achternaam = model.LastName, afkorting = "A+B", actief = false, AspNetUserID = user.Id };
+                        Medewerker = new Medewerkers { voornaam = model.FirstName, tussenvoegsel = model.TussenVoegsel, achternaam = model.LastName, afkorting = "A+B", Actief = false, AspNetUserID = user.Id };
                     }
                     UserManager.AddToRole(user.Id, "Medewerker");
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
