@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -197,10 +200,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CategorienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\VoertuigensController.cs" />
+    <Compile Include="Controllers\PDFController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +248,7 @@
     <Compile Include="Models\Medewerkers.cs">
       <DependentUpon>JansenModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PDFMaker.cs" />
     <Compile Include="Models\PrijsHistorie.cs">
       <DependentUpon>JansenModel.tt</DependentUpon>
     </Compile>
@@ -336,19 +339,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Voertuigens\Create.cshtml" />
-    <Content Include="Views\Voertuigens\Delete.cshtml" />
-    <Content Include="Views\Voertuigens\Details.cshtml" />
-    <Content Include="Views\Voertuigens\Edit.cshtml" />
-    <Content Include="Views\Voertuigens\Index.cshtml" />
-    <Content Include="Views\Categorien\Create.cshtml" />
-    <Content Include="Views\Categorien\Delete.cshtml" />
-    <Content Include="Views\Categorien\Details.cshtml" />
-    <Content Include="Views\Categorien\Edit.cshtml" />
-    <Content Include="Views\Categorien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PDF\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
