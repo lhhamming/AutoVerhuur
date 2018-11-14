@@ -203,7 +203,9 @@
     <Compile Include="Controllers\CategorienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedewerkersController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\ReadyListController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\VerhuurLijjstController.cs" />
     <Compile Include="Controllers\VoertuigenLijstController.cs" />
@@ -366,6 +368,10 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Link.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Medewerkers\Details.cshtml" />
+    <Content Include="Views\Medewerkers\Edit.cshtml" />
+    <Content Include="Views\Medewerkers\Index.cshtml" />
+    <Content Include="Views\ReadyList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
