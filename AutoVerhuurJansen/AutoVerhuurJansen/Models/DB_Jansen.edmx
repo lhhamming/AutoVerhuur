@@ -133,6 +133,7 @@
           <Property Name="categorieId" Type="int" Nullable="false" />
           <Property Name="merk" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Actief" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="fk_AspNetUserIDKlant">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -475,6 +476,7 @@
           <Property Name="categorieId" Type="Int32" Nullable="false" />
           <Property Name="merk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Actief" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Categorie" Relationship="Self.FK_Voertuigen_Categorie" FromRole="Voertuigen" ToRole="Categorie" />
           <NavigationProperty Name="Verhuren" Relationship="Self.FK_Verhuren_Voertuigen" FromRole="Voertuigen" ToRole="Verhuren" />
         </EntityType>
@@ -594,7 +596,7 @@
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DB_A42A9A_lhhammingEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_A42A9A_lhhammingEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
@@ -652,7 +654,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_A42A9A_lhhammingModelStoreContainer" CdmEntityContainer="DB_A42A9A_lhhammingEntities">
+        <EntityContainerMapping StorageEntityContainer="DB_A42A9A_lhhammingModelStoreContainer" CdmEntityContainer="DB_A42A9A_lhhammingEntities1">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -779,6 +781,7 @@
                 <ScalarProperty Name="categorieId" ColumnName="categorieId" />
                 <ScalarProperty Name="merk" ColumnName="merk" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="Actief" ColumnName="Actief" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

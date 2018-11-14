@@ -200,68 +200,65 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CategorienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
     <Compile Include="Controllers\ReadyListController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\VerhuurLijstController.cs" />
-    <Compile Include="Controllers\VoertuigenLijstController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRoles.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaims.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogins.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUsers.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Categorie.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\JansenModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JansenModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JansenModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JansenModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JansenModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JansenModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Klanten.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Medewerkers.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_Jansen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_Jansen.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PDFMaker.cs" />
     <Compile Include="Models\PrijsHistorie.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Verhuren.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Voertuigen.cs">
-      <DependentUpon>JansenModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -278,27 +275,27 @@
     <Content Include="img\audi.png" />
     <Content Include="img\bmw.jpg" />
     <Content Include="img\Porsche.png" />
-    <Content Include="Models\JansenModel.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JansenModel.edmx</DependentUpon>
-      <LastGenOutput>JansenModel.Context.cs</LastGenOutput>
+      <DependentUpon>DB_Jansen.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\JansenModel.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JansenModel.edmx</DependentUpon>
-      <LastGenOutput>JansenModel.cs</LastGenOutput>
+      <DependentUpon>DB_Jansen.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\JansenModel.edmx">
+    <EntityDeploy Include="Models\DB_Jansen.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JansenModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DB_Jansen.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\JansenModel.edmx.diagram">
-      <DependentUpon>JansenModel.edmx</DependentUpon>
+    <Content Include="Models\DB_Jansen.edmx.diagram">
+      <DependentUpon>DB_Jansen.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -347,21 +344,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\VoertuigenLijst\Create.cshtml" />
-    <Content Include="Views\VoertuigenLijst\Delete.cshtml" />
-    <Content Include="Views\VoertuigenLijst\Details.cshtml" />
-    <Content Include="Views\VoertuigenLijst\Edit.cshtml" />
-    <Content Include="Views\VoertuigenLijst\Index.cshtml" />
-    <Content Include="Views\Categorien\Create.cshtml" />
-    <Content Include="Views\Categorien\Delete.cshtml" />
-    <Content Include="Views\Categorien\Details.cshtml" />
-    <Content Include="Views\Categorien\Edit.cshtml" />
-    <Content Include="Views\Categorien\Index.cshtml" />
-    <Content Include="Views\VerhuurLijst\Create.cshtml" />
-    <Content Include="Views\VerhuurLijst\Delete.cshtml" />
-    <Content Include="Views\VerhuurLijst\Details.cshtml" />
-    <Content Include="Views\VerhuurLijst\Edit.cshtml" />
-    <Content Include="Views\VerhuurLijst\Index.cshtml" />
     <Content Include="Views\Account\RegisterKlant.cshtml" />
     <Content Include="Views\Account\RegisterMedewerker.cshtml" />
     <Content Include="Views\ReadyList\Index.cshtml" />
