@@ -1,0 +1,62 @@
+﻿@model IEnumerable<AutoVerhuurJansen.Models.Medewerkers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tussenvoegsel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.afkorting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actief)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tussenvoegsel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.achternaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afkorting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actief)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.medewerkerId }) |
+        </td>
+    </tr>
+}
+
+</table>

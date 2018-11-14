@@ -1,0 +1,67 @@
+﻿@model AutoVerhuurJansen.Models.Medewerkers
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Medewerkers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tussenvoegsel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tussenvoegsel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.achternaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.achternaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.afkorting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.afkorting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actief)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.medewerkerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

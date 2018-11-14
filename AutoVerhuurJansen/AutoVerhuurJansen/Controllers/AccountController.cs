@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AutoVerhuurJansen.Models;
 using System.Data.Entity.Validation;
+using System.Net;
 
 namespace AutoVerhuurJansen.Controllers
 {
@@ -345,6 +346,8 @@ namespace AutoVerhuurJansen.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        
 
         //
         // GET: /Account/ConfirmEmail

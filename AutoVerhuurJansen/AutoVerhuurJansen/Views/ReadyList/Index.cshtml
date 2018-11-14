@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AutoVerhuurJansen.Models.Verhuren>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Auto verhuur lijst</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.kenteken)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voertuigen.merk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voertuigen.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.beginDatum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.eindDatum)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kenteken)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voertuigen.merk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voertuigen.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.beginDatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.eindDatum)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
