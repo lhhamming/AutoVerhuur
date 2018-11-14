@@ -10,7 +10,7 @@ namespace AutoVerhuurJansen.Controllers
     public class ReadyListController : Controller
     {
 
-        DB_A42A9A_lhhammingEntities db = new DB_A42A9A_lhhammingEntities();
+        DB_Jansen db = new DB_Jansen();
         // GET: ReadyList
         public ActionResult Index()
         {

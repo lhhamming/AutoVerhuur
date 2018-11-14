@@ -83,4 +83,17 @@ namespace AutoVerhuurJansen.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class ChangeMedewerkerInfoVM
+    {
+        public string voornaam { get; set; }
+        public string tussenvoegsel { get; set; }
+        public string achternaam { get; set; }
+
+    }
+
+    public class ChangeMedewerkerActivityVM
+    {
+        public bool Actief { get; set; }
+    }
 }

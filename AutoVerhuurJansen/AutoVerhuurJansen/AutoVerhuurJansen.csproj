@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedewerkersController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
     <Compile Include="Controllers\ReadyListController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -347,6 +348,9 @@
     <Content Include="Views\Account\RegisterKlant.cshtml" />
     <Content Include="Views\Account\RegisterMedewerker.cshtml" />
     <Content Include="Views\ReadyList\Index.cshtml" />
+    <Content Include="Views\Medewerkers\Details.cshtml" />
+    <Content Include="Views\Medewerkers\Edit.cshtml" />
+    <Content Include="Views\Medewerkers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
