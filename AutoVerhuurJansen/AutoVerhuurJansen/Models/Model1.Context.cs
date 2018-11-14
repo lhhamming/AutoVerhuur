@@ -13,10 +13,10 @@ namespace AutoVerhuurJansen.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB_A42A9A_lhhammingEntities : DbContext
+    public partial class DB_A42A9A_lhhammingEntities1 : DbContext
     {
-        public DB_A42A9A_lhhammingEntities()
-            : base("name=DB_A42A9A_lhhammingEntities")
+        public DB_A42A9A_lhhammingEntities1()
+            : base("name=DB_A42A9A_lhhammingEntities1")
         {
         }
     
