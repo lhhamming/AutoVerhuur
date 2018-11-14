@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\VerhuurLijstController.cs" />
     <Compile Include="Controllers\VoertuigenLijstController.cs" />
     <Compile Include="Global.asax.cs">
@@ -360,10 +361,13 @@
     <Content Include="Views\VerhuurLijst\Details.cshtml" />
     <Content Include="Views\VerhuurLijst\Edit.cshtml" />
     <Content Include="Views\VerhuurLijst\Index.cshtml" />
+    <Content Include="Views\Account\RegisterKlant.cshtml" />
+    <Content Include="Views\Account\RegisterMedewerker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\PDF\" />
+    <Folder Include="Views\Roles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

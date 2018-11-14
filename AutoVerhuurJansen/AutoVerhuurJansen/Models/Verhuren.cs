@@ -17,7 +17,7 @@ namespace AutoVerhuurJansen.Models
         public int VerhuurId { get; set; }
         public int klantId { get; set; }
         public string kenteken { get; set; }
-        public int medewerkerId { get; set; }
+        public Nullable<int> medewerkerId { get; set; }
         public System.DateTime beginDatum { get; set; }
         public System.DateTime eindDatum { get; set; }
         public bool afgehandeld { get; set; }
