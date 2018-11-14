@@ -200,9 +200,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategorienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\VerhuurLijstController.cs" />
+    <Compile Include="Controllers\VoertuigenLijstController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -342,6 +345,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\VoertuigenLijst\Create.cshtml" />
+    <Content Include="Views\VoertuigenLijst\Delete.cshtml" />
+    <Content Include="Views\VoertuigenLijst\Details.cshtml" />
+    <Content Include="Views\VoertuigenLijst\Edit.cshtml" />
+    <Content Include="Views\VoertuigenLijst\Index.cshtml" />
+    <Content Include="Views\Categorien\Create.cshtml" />
+    <Content Include="Views\Categorien\Delete.cshtml" />
+    <Content Include="Views\Categorien\Details.cshtml" />
+    <Content Include="Views\Categorien\Edit.cshtml" />
+    <Content Include="Views\Categorien\Index.cshtml" />
+    <Content Include="Views\VerhuurLijst\Create.cshtml" />
+    <Content Include="Views\VerhuurLijst\Delete.cshtml" />
+    <Content Include="Views\VerhuurLijst\Details.cshtml" />
+    <Content Include="Views\VerhuurLijst\Edit.cshtml" />
+    <Content Include="Views\VerhuurLijst\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
