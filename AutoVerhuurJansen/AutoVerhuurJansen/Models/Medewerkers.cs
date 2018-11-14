@@ -26,6 +26,7 @@ namespace AutoVerhuurJansen.Models
         public string achternaam { get; set; }
         public string afkorting { get; set; }
         public string AspNetUserID { get; set; }
+        public bool Actief { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
