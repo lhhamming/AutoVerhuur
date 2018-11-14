@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\VerhuurLijstController.cs" />
     <Compile Include="Controllers\VoertuigenLijstController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -351,6 +352,11 @@
     <Content Include="Views\Categorien\Details.cshtml" />
     <Content Include="Views\Categorien\Edit.cshtml" />
     <Content Include="Views\Categorien\Index.cshtml" />
+    <Content Include="Views\VerhuurLijst\Create.cshtml" />
+    <Content Include="Views\VerhuurLijst\Delete.cshtml" />
+    <Content Include="Views\VerhuurLijst\Details.cshtml" />
+    <Content Include="Views\VerhuurLijst\Edit.cshtml" />
+    <Content Include="Views\VerhuurLijst\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
