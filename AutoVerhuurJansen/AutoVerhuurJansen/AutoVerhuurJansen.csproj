@@ -357,6 +357,8 @@
     <Content Include="Views\VerhuurLijst\Details.cshtml" />
     <Content Include="Views\VerhuurLijst\Edit.cshtml" />
     <Content Include="Views\VerhuurLijst\Index.cshtml" />
+    <Content Include="Views\Account\RegisterKlant.cshtml" />
+    <Content Include="Views\Account\RegisterMedewerker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

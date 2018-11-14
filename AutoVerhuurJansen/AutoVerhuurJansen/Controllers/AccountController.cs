@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AutoVerhuurJansen.Models;
+using System.Data.Entity.Validation;
 
 namespace AutoVerhuurJansen.Controllers
 {
@@ -17,6 +18,8 @@ namespace AutoVerhuurJansen.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
+        private DB_Jansen db = new DB_Jansen();
 
         public AccountController()
         {
@@ -163,6 +166,178 @@ namespace AutoVerhuurJansen.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        public ActionResult RegisterMedewerker()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterMedewerker(RegisterMedewerkerViewModel model)
+        {
+            var user = new ApplicationUser { };
+            if (ModelState.IsValid)
+            {
+                //Alle informatie voor het maken van een medewerker
+                if (model.TussenVoegsel != "")
+                {
+                    //string uName = model.FirstName + model.LastName;
+
+                    user = new ApplicationUser { UserName = model.UserEmail, Email = model.UserEmail };
+                }
+                else
+                {
+                    //string uName = model.FirstName + model.TussenVoegsel + model.LastName;
+
+                    user = new ApplicationUser { UserName = model.UserEmail, Email = model.UserEmail };
+                }
+
+                //De gebruiker toevegen aan de Role Medewerker omdat deze gemaakt is in de sectie 
+                //Registreer medewerker
+
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+
+                if (result.Succeeded)
+                {
+
+                    var Medewerker = new Medewerkers { };
+                    if (model.TussenVoegsel != "")
+                    {
+                        Medewerker = new Medewerkers { voornaam = model.FirstName, tussenvoegsel = "", achternaam = model.LastName, afkorting = "A+B", actief = false, AspNetUserID = user.Id };
+
+                    }
+                    else
+                    {
+                        Medewerker = new Medewerkers { voornaam = model.FirstName, tussenvoegsel = model.TussenVoegsel, achternaam = model.LastName, afkorting = "A+B", actief = false, AspNetUserID = user.Id };
+                    }
+                    UserManager.AddToRole(user.Id, "Medewerker");
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    using (DB_Jansen db = new DB_Jansen())
+                    {
+                        try
+                        {
+                            db.Medewerkers.Add(Medewerker);
+
+                            db.SaveChanges();
+
+                        }
+                        catch (DbEntityValidationException e)
+                        {
+                            Exception raise = e;
+                            foreach (var validationErrors in e.EntityValidationErrors)
+                            {
+                                foreach (var validationError in validationErrors.ValidationErrors)
+                                {
+                                    string message = string.Format("{0}:{1}",
+                                        validationErrors.Entry.Entity.ToString(),
+                                        validationError.ErrorMessage);
+                                    // raise a new exception nesting
+                                    // the current instance as InnerException
+                                    raise = new InvalidOperationException(message, raise);
+                                }
+                            }
+                            throw raise;
+                        }
+                    }
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        [AllowAnonymous]
+        public ActionResult RegisterKlant()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterKlant(RegisterKlantViewModel model)
+        {
+            var user = new ApplicationUser { };
+            if (ModelState.IsValid)
+            {
+                //Alle informatie voor het maken van een medewerker
+                if (model.TussenVoegsel != "")
+                {
+                    //string uName = model.FirstName + model.LastName;
+
+                    user = new ApplicationUser { UserName = model.UserEmail, Email = model.UserEmail };
+                }
+                else
+                {
+                    //string uName = model.FirstName + model.TussenVoegsel + model.LastName;
+
+                    user = new ApplicationUser { UserName = model.UserEmail, Email = model.UserEmail };
+                }
+
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var klant = new Klanten { };
+                    if (model.TussenVoegsel != "")
+                    {
+                        klant = new Klanten { voornaam = model.FirstName, tussenvoegsel = "", achternaam = model.LastName, adres = model.adres, postcode = model.postode, telNr = model.Telnr, mail = user.Id , AspNetUserID = user.Id };
+
+                    }
+                    else
+                    {
+                        klant = new Klanten { voornaam = model.FirstName, tussenvoegsel = model.TussenVoegsel, achternaam = model.LastName, adres = model.adres, postcode = model.postode, telNr = model.Telnr , mail = user.Id , AspNetUserID = user.Id };
+                    }
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    UserManager.AddToRole(user.Id, "Klant");
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    using (DB_Jansen db = new DB_Jansen())
+                    {
+                        try
+                        {
+                            db.Klanten.Add(klant);
+                            db.SaveChanges();
+                        }
+                        catch (DbEntityValidationException e)
+                        {
+                            Exception raise = e;
+                            foreach (var validationErrors in e.EntityValidationErrors)
+                            {
+                                foreach (var validationError in validationErrors.ValidationErrors)
+                                {
+                                    string message = string.Format("{0}:{1}",
+                                        validationErrors.Entry.Entity.ToString(),
+                                        validationError.ErrorMessage);
+                                    // raise a new exception nesting
+                                    // the current instance as InnerException
+                                    raise = new InvalidOperationException(message, raise);
+                                }
+                            }
+                            throw raise;
+                        }
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
