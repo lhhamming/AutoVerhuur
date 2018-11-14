@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\VerhuurLijstController.cs" />
     <Compile Include="Controllers\VoertuigenLijstController.cs" />
     <Compile Include="Global.asax.cs">
@@ -273,6 +274,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\audi.png" />
+    <Content Include="img\bmw.jpg" />
+    <Content Include="img\Porsche.png" />
     <Content Include="Models\JansenModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JansenModel.edmx</DependentUpon>
@@ -363,6 +367,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\PDF\" />
+    <Folder Include="Views\Roles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

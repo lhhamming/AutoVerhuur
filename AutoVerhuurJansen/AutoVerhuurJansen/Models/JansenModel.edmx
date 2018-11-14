@@ -101,6 +101,7 @@
           <Property Name="achternaam" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="afkorting" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="AspNetUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Actief" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PrijsHistorie">
           <Key>
@@ -119,7 +120,7 @@
           <Property Name="VerhuurId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="klantId" Type="int" Nullable="false" />
           <Property Name="kenteken" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="medewerkerId" Type="int" Nullable="false" />
+          <Property Name="medewerkerId" Type="int" />
           <Property Name="beginDatum" Type="date" Nullable="false" />
           <Property Name="eindDatum" Type="date" Nullable="false" />
           <Property Name="afgehandeld" Type="bit" Nullable="false" />
@@ -238,7 +239,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Verhuren_Medewerkers">
-          <End Role="Medewerkers" Type="Self.Medewerkers" Multiplicity="1" />
+          <End Role="Medewerkers" Type="Self.Medewerkers" Multiplicity="0..1" />
           <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medewerkers">
@@ -436,6 +437,7 @@
           <Property Name="achternaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="afkorting" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AspNetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Actief" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_AspNetUserIDMedewerker" FromRole="Medewerkers" ToRole="AspNetUsers" />
           <NavigationProperty Name="Verhuren" Relationship="Self.FK_Verhuren_Medewerkers" FromRole="Medewerkers" ToRole="Verhuren" />
         </EntityType>
@@ -457,7 +459,7 @@
           <Property Name="VerhuurId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="klantId" Type="Int32" Nullable="false" />
           <Property Name="kenteken" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="medewerkerId" Type="Int32" Nullable="false" />
+          <Property Name="medewerkerId" Type="Int32" />
           <Property Name="beginDatum" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="eindDatum" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="afgehandeld" Type="Boolean" Nullable="false" />
@@ -565,7 +567,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Verhuren_Medewerkers">
-          <End Role="Medewerkers" Type="Self.Medewerkers" Multiplicity="1" />
+          <End Role="Medewerkers" Type="Self.Medewerkers" Multiplicity="0..1" />
           <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medewerkers">
@@ -592,7 +594,7 @@
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DB_Jansen" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_A42A9A_lhhammingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
@@ -650,7 +652,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_A42A9A_lhhammingModelStoreContainer" CdmEntityContainer="DB_Jansen">
+        <EntityContainerMapping StorageEntityContainer="DB_A42A9A_lhhammingModelStoreContainer" CdmEntityContainer="DB_A42A9A_lhhammingEntities">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -742,6 +744,7 @@
                 <ScalarProperty Name="achternaam" ColumnName="achternaam" />
                 <ScalarProperty Name="afkorting" ColumnName="afkorting" />
                 <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
+                <ScalarProperty Name="Actief" ColumnName="Actief" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
