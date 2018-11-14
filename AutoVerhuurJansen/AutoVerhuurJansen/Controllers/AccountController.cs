@@ -19,7 +19,7 @@ namespace AutoVerhuurJansen.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        private DB_Jansen db = new DB_Jansen();
+        private DB_A42A9A_lhhammingEntities db = new DB_A42A9A_lhhammingEntities();
 
         public AccountController()
         {
