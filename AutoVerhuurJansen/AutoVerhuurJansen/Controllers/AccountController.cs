@@ -210,7 +210,6 @@ namespace AutoVerhuurJansen.Controllers
 
                 if (result.Succeeded)
                 {
-
                     var Medewerker = new Medewerkers { };
                     if (model.TussenVoegsel != "")
                     {

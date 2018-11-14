@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AutoVerhuurJansen.Models.Verhuren>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.beginDatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eindDatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.afgehandeld)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Klanten.voornaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medewerkers.voornaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Voertuigen.merk)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.beginDatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eindDatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afgehandeld)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Klanten.voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medewerkers.voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voertuigen.merk)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VerhuurId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VerhuurId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VerhuurId })
+        </td>
+    </tr>
+}
+
+</table>
