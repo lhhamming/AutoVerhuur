@@ -207,8 +207,8 @@
     <Compile Include="Controllers\PDFController.cs" />
     <Compile Include="Controllers\ReadyListController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\VerhuurAutoController.cs" />
     <Compile Include="Controllers\VerhuurLijjstController.cs" />
+    <Compile Include="Controllers\VoertuigenHuurController.cs" />
     <Compile Include="Controllers\VoertuigenLijstController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -373,11 +373,11 @@
     <Content Include="Views\Medewerkers\Edit.cshtml" />
     <Content Include="Views\Medewerkers\Index.cshtml" />
     <Content Include="Views\ReadyList\Index.cshtml" />
-    <Content Include="Views\VerhuurAuto\Create.cshtml" />
-    <Content Include="Views\VerhuurAuto\Delete.cshtml" />
-    <Content Include="Views\VerhuurAuto\Details.cshtml" />
-    <Content Include="Views\VerhuurAuto\Edit.cshtml" />
-    <Content Include="Views\VerhuurAuto\Index.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Delete.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Details.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Edit.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Index.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Rent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
