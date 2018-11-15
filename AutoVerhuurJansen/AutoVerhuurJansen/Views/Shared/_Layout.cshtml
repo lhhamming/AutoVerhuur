@@ -30,10 +30,10 @@
 
                     else if (User.IsInRole("Applicatiebeheerder"))
                     {
-                    <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
-                    <li>@Html.ActionLink("Voertuigenlijst","Index","VoertuigenLijst")</li>
-                    <li>@Html.ActionLink("VerhuurLijst","Index","VerhuurLijjst")</li>
-                    <li>@Html.ActionLink("Categorien","Index","Categorien")</li>
+                        <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
+                        <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
+                        <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
+                        <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
                     }
 
                     else if (User.IsInRole("Medewerker"))
@@ -45,7 +45,7 @@
                     {
 
                     }
-
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
