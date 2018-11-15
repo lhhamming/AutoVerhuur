@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AutoVerhuurJansen.Models.Voertuigen>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.merk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actief)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorie.categorieNaam)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if(item.Actief != true)
+        {
+            //Hij is niet actief dus niet laten zien
+        }
+        else
+        {
+        <td>
+            @Html.DisplayFor(modelItem => item.merk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actief)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie.categorieNaam)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.kenteken }) |
+            @Html.ActionLink("Details", "Details", new { id=item.kenteken }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.kenteken })
+        </td>   
+        }
+    </tr>
+}
+
+</table>

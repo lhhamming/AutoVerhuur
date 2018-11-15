@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AutoVerhuurJansen.Models;
 using System.Data.Entity.Validation;
+using System.Net;
 
 namespace AutoVerhuurJansen.Controllers
 {
@@ -19,7 +20,7 @@ namespace AutoVerhuurJansen.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        private DB_A42A9A_lhhammingEntities db = new DB_A42A9A_lhhammingEntities();
+        private DB_Jansen db = new DB_Jansen();
 
         public AccountController()
         {
@@ -210,7 +211,6 @@ namespace AutoVerhuurJansen.Controllers
 
                 if (result.Succeeded)
                 {
-
                     var Medewerker = new Medewerkers { };
                     if (model.TussenVoegsel != "")
                     {
@@ -346,6 +346,8 @@ namespace AutoVerhuurJansen.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        
 
         //
         // GET: /Account/ConfirmEmail
