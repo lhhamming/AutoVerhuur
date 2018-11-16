@@ -45,7 +45,10 @@ namespace AutoVerhuurJansen.Controllers
         public ActionResult Reserveer(string id, DateTime startDate, DateTime endDate)
         {
 
-            var userID = db.Klanten.Where(k => k.AspNetUserID == User.Identity.GetUserId()).FirstOrDefault();
+
+            var userId = User.Identity.GetUserId();
+
+            var userID = db.Klanten.Where(k => k.AspNetUserID == userId).FirstOrDefault();
 
 
             if (ModelState.IsValid)
