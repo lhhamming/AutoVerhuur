@@ -15,6 +15,7 @@ namespace AutoVerhuurJansen.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private DB_Jansen db = new DB_Jansen();
 
         public ManageController()
         {
@@ -331,6 +332,38 @@ namespace AutoVerhuurJansen.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        public ActionResult ChangeKlantinfo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeKlantinfo(ChangeKlantinfoModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                if(User.IsInRole("Klant"))
+                {
+                    var userid = User.Identity.GetUserId();
+                    var CurrentKlant = db.Klanten.Where(m => m.AspNetUserID == userid).FirstOrDefault();
+
+                    CurrentKlant.adres = model.Adres;
+                    CurrentKlant.woonplaats = model.Woonplaats;
+                    CurrentKlant.postcode = model.Postcode;
+                    CurrentKlant.telNr = model.Telefoonnummer;
+                }
+                else
+                {
+                    RedirectToAction("Index");
+                }
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
 #region Helpers

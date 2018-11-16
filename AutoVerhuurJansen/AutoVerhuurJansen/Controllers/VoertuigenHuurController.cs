@@ -80,6 +80,28 @@ namespace AutoVerhuurJansen.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rent([Bind(Include = "beginDatum,eindDatum")]Verhuren verhuren, string id)
+        {
+            //Get the current userID
+            var currentuser = User.Identity.GetUserId();
+            //CurrentKlant
+            //var klantidUser = db.Klanten.Where(k => k.AspNetUserID == currentuser).FirstOrDefault();
+            verhuren.klantId = 0;
+                //klantidUser.klantId;
+            verhuren.afgehandeld = false;
+            verhuren.kenteken = id;
+
+            if (ModelState.IsValid)
+            {
+                db.Verhuren.Add(verhuren);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // GET: VoertuigenHuur/Create
         public ActionResult Create()
         {

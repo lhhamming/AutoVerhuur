@@ -16,7 +16,7 @@ namespace AutoVerhuurJansen.Models
     public partial class DB_Jansen : DbContext
     {
         public DB_Jansen()
-            : base("name=DB_A42A9A_lhhammingEntities1")
+            : base("name=DB_Jansen")
         {
         }
     
@@ -31,10 +31,11 @@ namespace AutoVerhuurJansen.Models
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Categorie> Categorie { get; set; }
-        public virtual DbSet<Klanten> Klanten { get; set; }
         public virtual DbSet<Medewerkers> Medewerkers { get; set; }
         public virtual DbSet<PrijsHistorie> PrijsHistorie { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Verhuren> Verhuren { get; set; }
         public virtual DbSet<Voertuigen> Voertuigen { get; set; }
+        public virtual DbSet<Klanten> Klanten { get; set; }
     }
 }

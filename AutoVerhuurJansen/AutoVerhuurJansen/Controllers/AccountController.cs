@@ -312,17 +312,16 @@ namespace AutoVerhuurJansen.Controllers
                     var klant = new Klanten { };
                     if (model.TussenVoegsel != "")
                     {
-                        klant = new Klanten { voornaam = model.FirstName, tussenvoegsel = "", achternaam = model.LastName, adres = model.adres, postcode = model.postcode, telNr = model.Telnr, mail = user.Id , AspNetUserID = user.Id };
+                        klant = new Klanten { voornaam = model.FirstName, tussenvoegsel = "", achternaam = model.LastName, adres = model.adres, postcode = model.postcode, woonplaats = model.Residence ,telNr = model.Telnr, AspNetUserID = user.Id };
 
                     }
                     else
                     {
-                        klant = new Klanten { voornaam = model.FirstName, tussenvoegsel = model.TussenVoegsel, achternaam = model.LastName, adres = model.adres, postcode = model.postcode, telNr = model.Telnr , mail = user.Id , AspNetUserID = user.Id };
+                        klant = new Klanten { voornaam = model.FirstName, tussenvoegsel = model.TussenVoegsel, achternaam = model.LastName, adres = model.adres, postcode = model.postcode, woonplaats = model.Residence, telNr = model.Telnr , AspNetUserID = user.Id };
                     }
+                    UserManager.AddToRole(user.Id, "Klant");
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    UserManager.AddToRole(user.Id, "Klant");
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
