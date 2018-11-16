@@ -28,8 +28,6 @@ namespace AutoVerhuurJansen.Models
         public string woonplaats { get; set; }
         public string postcode { get; set; }
         public string telNr { get; set; }
-        public string mail { get; set; }
-        public string wachtwoord { get; set; }
         public string AspNetUserID { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }

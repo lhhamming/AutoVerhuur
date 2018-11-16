@@ -22,8 +22,8 @@ namespace AutoVerhuurJansen.Models
         public System.DateTime eindDatum { get; set; }
         public bool afgehandeld { get; set; }
     
-        public virtual Klanten Klanten { get; set; }
         public virtual Medewerkers Medewerkers { get; set; }
         public virtual Voertuigen Voertuigen { get; set; }
+        public virtual Klanten Klanten { get; set; }
     }
 }

@@ -33,7 +33,7 @@
                         <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
                     }
 
-                    else if (User.IsInRole("Applicatiebeheerder"))
+                    @if (User.IsInRole("Applicatiebeheerder"))
                     {
                         <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
                         <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
@@ -43,12 +43,12 @@
                         <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
                     }
 
-                    else if (User.IsInRole("Medewerker"))
+                    @if (User.IsInRole("Medewerker"))
                     {
                         <li>@Html.ActionLink("Bereid Lijst", "Index", "ReadyList")</li>
                     }
 
-                    else if (User.IsInRole("Klant"))
+                    @if (User.IsInRole("Klant"))
                     {
                         <li>@Html.ActionLink("Verander Gebruikerinfo", "ChangeKlantinfo", "Manage")</li>
                     }

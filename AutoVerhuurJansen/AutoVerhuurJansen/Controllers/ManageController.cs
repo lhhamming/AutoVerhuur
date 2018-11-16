@@ -339,6 +339,8 @@ namespace AutoVerhuurJansen.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ChangeKlantinfo(ChangeKlantinfoModel model)
         {
             if(ModelState.IsValid)

@@ -10,7 +10,12 @@ namespace AutoVerhuurJansen.Controllers
     {
         public ActionResult Index()
         {
+            if (User.IsInRole("Klant"))
+            {
+                int t;
+            }
             return View();
+            
         }
 
         public ActionResult About()

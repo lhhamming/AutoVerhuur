@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_A42A9A_lhhammingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_A42A9A_lhhammingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -87,8 +87,6 @@
           <Property Name="woonplaats" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="postcode" Type="nchar" MaxLength="7" Nullable="false" />
           <Property Name="telNr" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="wachtwoord" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AspNetUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="Medewerkers">
@@ -112,6 +110,16 @@
           <Property Name="beginDatum" Type="date" Nullable="false" />
           <Property Name="eindDatum" Type="date" />
           <Property Name="prijsPerDag" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Verhuren">
           <Key>
@@ -286,6 +294,7 @@
           <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medewerkers" EntityType="Self.Medewerkers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrijsHistorie" EntityType="Self.PrijsHistorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verhuren" EntityType="Self.Verhuren" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voertuigen" EntityType="Self.Voertuigen" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_AspNetUserIDKlant" Association="Self.fk_AspNetUserIDKlant">
@@ -333,8 +342,7 @@
             <End Role="Voertuigen" EntitySet="Voertuigen" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_A42A9A_lhhammingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -395,9 +403,9 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Klanten" Relationship="Self.fk_AspNetUserIDKlant" FromRole="AspNetUsers" ToRole="Klanten" />
           <NavigationProperty Name="Medewerkers" Relationship="Self.fk_AspNetUserIDMedewerker" FromRole="AspNetUsers" ToRole="Medewerkers" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="Klanten" Relationship="DB_A42A9A_lhhammingModel.fk_AspNetUserIDKlant" FromRole="AspNetUsers" ToRole="Klanten" />
         </EntityType>
         <EntityType Name="Categorie">
           <Key>
@@ -409,24 +417,6 @@
           <Property Name="aantalKoffers" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PrijsHistorie" Relationship="Self.FK_PrijsHistorie_Categorie" FromRole="Categorie" ToRole="PrijsHistorie" />
           <NavigationProperty Name="Voertuigen" Relationship="Self.FK_Voertuigen_Categorie" FromRole="Categorie" ToRole="Voertuigen" />
-        </EntityType>
-        <EntityType Name="Klanten">
-          <Key>
-            <PropertyRef Name="klantId" />
-          </Key>
-          <Property Name="klantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tussenvoegsel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="achternaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="woonplaats" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="postcode" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="telNr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="wachtwoord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AspNetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_AspNetUserIDKlant" FromRole="Klanten" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Verhuren" Relationship="Self.FK_Verhuren_Klanten" FromRole="Klanten" ToRole="Verhuren" />
         </EntityType>
         <EntityType Name="Medewerkers">
           <Key>
@@ -453,6 +443,16 @@
           <Property Name="prijsPerDag" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Categorie" Relationship="Self.FK_PrijsHistorie_Categorie" FromRole="PrijsHistorie" ToRole="Categorie" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Verhuren">
           <Key>
             <PropertyRef Name="VerhuurId" />
@@ -464,9 +464,9 @@
           <Property Name="beginDatum" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="eindDatum" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="afgehandeld" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Klanten" Relationship="Self.FK_Verhuren_Klanten" FromRole="Verhuren" ToRole="Klanten" />
           <NavigationProperty Name="Medewerkers" Relationship="Self.FK_Verhuren_Medewerkers" FromRole="Verhuren" ToRole="Medewerkers" />
           <NavigationProperty Name="Voertuigen" Relationship="Self.FK_Verhuren_Voertuigen" FromRole="Verhuren" ToRole="Voertuigen" />
+          <NavigationProperty Name="Klanten" Relationship="DB_A42A9A_lhhammingModel.FK_Verhuren_Klanten" FromRole="Verhuren" ToRole="Klanten" />
         </EntityType>
         <EntityType Name="Voertuigen">
           <Key>
@@ -508,18 +508,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_AspNetUserIDKlant">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="Klanten" Type="Self.Klanten" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Klanten">
-              <PropertyRef Name="AspNetUserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_AspNetUserIDMedewerker">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Medewerkers" Type="Self.Medewerkers" Multiplicity="*" />
@@ -556,18 +544,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Verhuren_Klanten">
-          <End Role="Klanten" Type="Self.Klanten" Multiplicity="1" />
-          <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Klanten">
-              <PropertyRef Name="klantId" />
-            </Principal>
-            <Dependent Role="Verhuren">
-              <PropertyRef Name="klantId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Verhuren_Medewerkers">
           <End Role="Medewerkers" Type="Self.Medewerkers" Multiplicity="0..1" />
           <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
@@ -596,16 +572,16 @@
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DB_A42A9A_lhhammingEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB_Jansen" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Categorie" EntityType="Self.Categorie" />
-          <EntitySet Name="Klanten" EntityType="Self.Klanten" />
           <EntitySet Name="Medewerkers" EntityType="Self.Medewerkers" />
           <EntitySet Name="PrijsHistorie" EntityType="Self.PrijsHistorie" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Verhuren" EntityType="Self.Verhuren" />
           <EntitySet Name="Voertuigen" EntityType="Self.Voertuigen" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -615,10 +591,6 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="fk_AspNetUserIDKlant" Association="Self.fk_AspNetUserIDKlant">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Klanten" EntitySet="Klanten" />
           </AssociationSet>
           <AssociationSet Name="fk_AspNetUserIDMedewerker" Association="Self.fk_AspNetUserIDMedewerker">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -632,10 +604,6 @@
             <End Role="Categorie" EntitySet="Categorie" />
             <End Role="Voertuigen" EntitySet="Voertuigen" />
           </AssociationSet>
-          <AssociationSet Name="FK_Verhuren_Klanten" Association="Self.FK_Verhuren_Klanten">
-            <End Role="Klanten" EntitySet="Klanten" />
-            <End Role="Verhuren" EntitySet="Verhuren" />
-          </AssociationSet>
           <AssociationSet Name="FK_Verhuren_Medewerkers" Association="Self.FK_Verhuren_Medewerkers">
             <End Role="Medewerkers" EntitySet="Medewerkers" />
             <End Role="Verhuren" EntitySet="Verhuren" />
@@ -648,13 +616,62 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Klanten" EntityType="DB_A42A9A_lhhammingModel.Klanten" />
+          <AssociationSet Name="fk_AspNetUserIDKlant" Association="DB_A42A9A_lhhammingModel.fk_AspNetUserIDKlant">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Klanten" EntitySet="Klanten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verhuren_Klanten" Association="DB_A42A9A_lhhammingModel.FK_Verhuren_Klanten">
+            <End Role="Klanten" EntitySet="Klanten" />
+            <End Role="Verhuren" EntitySet="Verhuren" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Klanten">
+          <Key>
+            <PropertyRef Name="klantId" />
+          </Key>
+          <Property Name="klantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voornaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tussenvoegsel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="achternaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="woonplaats" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="postcode" Type="String" Nullable="false" MaxLength="7" FixedLength="true" Unicode="true" />
+          <Property Name="telNr" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AspNetUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DB_A42A9A_lhhammingModel.fk_AspNetUserIDKlant" FromRole="Klanten" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Verhuren" Relationship="DB_A42A9A_lhhammingModel.FK_Verhuren_Klanten" FromRole="Klanten" ToRole="Verhuren" />
+        </EntityType>
+        <Association Name="fk_AspNetUserIDKlant">
+          <End Type="DB_A42A9A_lhhammingModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="DB_A42A9A_lhhammingModel.Klanten" Role="Klanten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klanten">
+              <PropertyRef Name="AspNetUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verhuren_Klanten">
+          <End Type="DB_A42A9A_lhhammingModel.Klanten" Role="Klanten" Multiplicity="1" />
+          <End Type="DB_A42A9A_lhhammingModel.Verhuren" Role="Verhuren" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klanten">
+              <PropertyRef Name="klantId" />
+            </Principal>
+            <Dependent Role="Verhuren">
+              <PropertyRef Name="klantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_A42A9A_lhhammingModelStoreContainer" CdmEntityContainer="DB_A42A9A_lhhammingEntities1">
+        <EntityContainerMapping StorageEntityContainer="DB_A42A9A_lhhammingModelStoreContainer" CdmEntityContainer="DB_Jansen">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -720,23 +737,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Klanten">
-            <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.Klanten">
-              <MappingFragment StoreEntitySet="Klanten">
-                <ScalarProperty Name="klantId" ColumnName="klantId" />
-                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
-                <ScalarProperty Name="tussenvoegsel" ColumnName="tussenvoegsel" />
-                <ScalarProperty Name="achternaam" ColumnName="achternaam" />
-                <ScalarProperty Name="adres" ColumnName="adres" />
-                <ScalarProperty Name="woonplaats" ColumnName="woonplaats" />
-                <ScalarProperty Name="postcode" ColumnName="postcode" />
-                <ScalarProperty Name="telNr" ColumnName="telNr" />
-                <ScalarProperty Name="mail" ColumnName="mail" />
-                <ScalarProperty Name="wachtwoord" ColumnName="wachtwoord" />
-                <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Medewerkers">
             <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.Medewerkers">
               <MappingFragment StoreEntitySet="Medewerkers">
@@ -758,6 +758,17 @@
                 <ScalarProperty Name="beginDatum" ColumnName="beginDatum" />
                 <ScalarProperty Name="eindDatum" ColumnName="eindDatum" />
                 <ScalarProperty Name="prijsPerDag" ColumnName="prijsPerDag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -793,6 +804,21 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Klanten">
+            <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.Klanten">
+              <MappingFragment StoreEntitySet="Klanten">
+                <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
+                <ScalarProperty Name="telNr" ColumnName="telNr" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="woonplaats" ColumnName="woonplaats" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="achternaam" ColumnName="achternaam" />
+                <ScalarProperty Name="tussenvoegsel" ColumnName="tussenvoegsel" />
+                <ScalarProperty Name="voornaam" ColumnName="voornaam" />
+                <ScalarProperty Name="klantId" ColumnName="klantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
