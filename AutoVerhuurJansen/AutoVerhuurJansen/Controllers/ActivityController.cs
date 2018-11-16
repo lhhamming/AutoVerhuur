@@ -1,4 +1,6 @@
 ﻿using AutoVerhuurJansen.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,23 @@ namespace AutoVerhuurJansen.Controllers
     public class ActivityController : Controller
     {
         private DB_Jansen db = new DB_Jansen();
+        private ApplicationUserManager _userManager;
 
         // GET: Activity
         public ActionResult Index()
         {
             return View(db.Medewerkers.ToList());
+        }
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         // GET: Activity/Deactivate
@@ -43,6 +57,9 @@ namespace AutoVerhuurJansen.Controllers
             Medewerkers medewerker = db.Medewerkers.Find(id);
             //set actief to false
             medewerker.Actief = false;
+            var user = db.Medewerkers.Find(id);
+            UserManager.SetLockoutEnabled(user.AspNetUserID , true);
+            UserManager.SetLockoutEndDate(user.AspNetUserID, DateTimeOffset.UtcNow.AddDays(182500));
             db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -62,6 +79,7 @@ namespace AutoVerhuurJansen.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(medewerker);
         }
 
@@ -73,7 +91,9 @@ namespace AutoVerhuurJansen.Controllers
         {
             Medewerkers medewerker = db.Medewerkers.Find(id);
             //Set actief to true
+            var user = db.Medewerkers.Find(id);
             medewerker.Actief = true;
+            UserManager.SetLockoutEnabled(user.AspNetUserID, true);
             db.SaveChanges();
 
             return RedirectToAction("Index");
