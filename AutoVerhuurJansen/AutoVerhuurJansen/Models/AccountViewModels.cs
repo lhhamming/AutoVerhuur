@@ -138,7 +138,7 @@ namespace AutoVerhuurJansen.Models
 
         [Required]
         [Display(Name = "Postcode")]
-        public string postode { get; set; }
+        public string postcode { get; set; }
 
         [Required]
         [Display(Name = "Woonplaats")]
@@ -151,10 +151,6 @@ namespace AutoVerhuurJansen.Models
         [Required]
         [Display(Name = "Telefoon Nummer")]
         public string Telnr { get; set; }
-
-        [Required]
-        [Display(Name = "Email")]
-        public string Mail { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -196,5 +192,26 @@ namespace AutoVerhuurJansen.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class ChangeKlantinfoModel
+    {
+        [Required]
+        [Display(Name = "Adres")]
+        public string Adres { get; set; }
+
+        [Required]
+        [Display(Name = "Woonplaats")]
+        public string Woonplaats { get; set; }
+
+        [Required]
+        [StringLength(maximumLength:6)]
+        [Display(Name = "Postcode")]
+        public string Postcode { get; set; }
+
+        [Required]
+        [Display(Name = "Telefoonnummer")]
+        [StringLength(maximumLength: 10)]
+        public string Telefoonnummer { get; set; }
     }
 }

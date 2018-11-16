@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Autoverhuur Jansen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="navBarUl">
@@ -25,7 +25,12 @@
 
                     @if (User.IsInRole("Manager"))
                     {
-
+                        <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
+                        <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
+                        <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
+                        <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
+                        <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
+                        <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
                     }
 
                     else if (User.IsInRole("Applicatiebeheerder"))
@@ -34,16 +39,18 @@
                         <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
                         <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
                         <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
+                        <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
+                        <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
                     }
 
                     else if (User.IsInRole("Medewerker"))
                     {
-
+                        <li>@Html.ActionLink("Bereid Lijst", "Index", "ReadyList")</li>
                     }
 
                     else if (User.IsInRole("Klant"))
                     {
-
+                        <li>@Html.ActionLink("Verander Gebruikerinfo", "ChangeKlantinfo", "Manage")</li>
                     }
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
