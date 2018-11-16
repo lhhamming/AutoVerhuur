@@ -25,7 +25,12 @@
 
                     @if (User.IsInRole("Manager"))
                     {
-
+                        <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
+                        <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
+                        <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
+                        <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
+                        <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
+                        <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
                     }
 
                     else if (User.IsInRole("Applicatiebeheerder"))
@@ -34,11 +39,13 @@
                         <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
                         <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
                         <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
+                        <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
+                        <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
                     }
 
                     else if (User.IsInRole("Medewerker"))
                     {
-
+                        <li>@Html.ActionLink("Bereid Lijst", "Index", "ReadyList")</li>
                     }
 
                     else if (User.IsInRole("Klant"))

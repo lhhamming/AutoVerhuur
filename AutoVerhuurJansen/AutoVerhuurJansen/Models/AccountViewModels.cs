@@ -138,7 +138,7 @@ namespace AutoVerhuurJansen.Models
 
         [Required]
         [Display(Name = "Postcode")]
-        public string postode { get; set; }
+        public string postcode { get; set; }
 
         [Required]
         [Display(Name = "Woonplaats")]
@@ -151,10 +151,6 @@ namespace AutoVerhuurJansen.Models
         [Required]
         [Display(Name = "Telefoon Nummer")]
         public string Telnr { get; set; }
-
-        [Required]
-        [Display(Name = "Email")]
-        public string Mail { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
