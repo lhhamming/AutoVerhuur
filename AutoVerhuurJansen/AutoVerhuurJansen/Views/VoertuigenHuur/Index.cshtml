@@ -1,43 +1,59 @@
 ﻿@model IEnumerable<AutoVerhuurJansen.Models.Voertuigen>
-
 @{
     ViewBag.Title = "Index";
 }
+<!-- Inzien van beschikbare voertuigen om te huren-->
+<h2>Huur aanmaken</h2>
 
-<h2>Index</h2>
+<form asp-controller="VoertuigenHuur" asp-action="LoadVoertuigen">
+    <p>
+        Begin Datum: <input autocomplete="off" type="date" name="startDate" class="date-picker form-control">
+        Eind Datum <input autocomplete="off" type="date" name="endDate" class="date-picker form-control" />
+        <input class="btn btn-success" type="submit" value="Filter" />
+    </p>
+</form>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.merk)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categorie.categorieNaam)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.merk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categorie.categorieNaam)
-        </td>
-        <td>
-            @Html.ActionLink("Auto huren", "Rent", new { id = Request.Params["id"] })
-        </td>
-    </tr>
-}
-
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.merk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie.aantalPersonen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie.aantalKoffers)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.merk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie.aantalPersonen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie.aantalKoffers)
+                </td>
+                <td>
+                    @Html.ActionLink("Reserveer", "Reserveer", new { id = item.kenteken, startDate = Request.Params["startDate"], endDate = Request.Params["endDate"] })
+                    @*<button class="btn btn-info" onclick="location.href='@Url.Action("Reserveer", "Reserveer", new { id = item.lodgeID, startDate = Request.Params["startDate"], endDate = Request.Params["endDate"] })';return false;">Register</button>*@
+                    @*<button class="btn btn-info">Info</button>*@
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
