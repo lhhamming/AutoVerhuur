@@ -18,9 +18,6 @@
             @Html.DisplayNameFor(model => model.type)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Actief)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Categorie.categorieNaam)
         </th>
         <th></th>
@@ -35,13 +32,10 @@
             @Html.DisplayFor(modelItem => item.type)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Actief)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Categorie.categorieNaam)
         </td>
         <td>
-            @Html.ActionLink("Auto huren", "Rent", new { id=item.kenteken })
+            @Html.ActionLink("Auto huren", "Rent", new { id = Request.Params["id"] })
         </td>
     </tr>
 }

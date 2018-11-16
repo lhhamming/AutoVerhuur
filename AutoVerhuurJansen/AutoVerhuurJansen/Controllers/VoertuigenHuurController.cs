@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoVerhuurJansen.Models;
+using Microsoft.AspNet.Identity;
 
 namespace AutoVerhuurJansen.Controllers
 {
@@ -39,6 +40,28 @@ namespace AutoVerhuurJansen.Controllers
         public ActionResult Rent()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rent([Bind(Include = "beginDatum,eindDatum")]Verhuren verhuren, string id)
+        {
+            //Get the current userID
+            var currentuser = User.Identity.GetUserId();
+            //CurrentKlant
+            //var klantidUser = db.Klanten.Where(k => k.AspNetUserID == currentuser).FirstOrDefault();
+            verhuren.klantId = 0;
+                //klantidUser.klantId;
+            verhuren.afgehandeld = false;
+            verhuren.kenteken = id;
+
+            if (ModelState.IsValid)
+            {
+                db.Verhuren.Add(verhuren);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
         }
 
         // GET: VoertuigenHuur/Create
