@@ -193,4 +193,25 @@ namespace AutoVerhuurJansen.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class ChangeKlantinfoModel
+    {
+        [Required]
+        [Display(Name = "Adres")]
+        public string Adres { get; set; }
+
+        [Required]
+        [Display(Name = "Woonplaats")]
+        public string Woonplaats { get; set; }
+
+        [Required]
+        [StringLength(maximumLength:6)]
+        [Display(Name = "Postcode")]
+        public string Postcode { get; set; }
+
+        [Required]
+        [Display(Name = "Telefoonnummer")]
+        [StringLength(maximumLength: 10)]
+        public string Telefoonnummer { get; set; }
+    }
 }
