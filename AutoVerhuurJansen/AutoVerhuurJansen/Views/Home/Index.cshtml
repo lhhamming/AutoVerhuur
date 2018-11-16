@@ -7,8 +7,15 @@
     <p class="lead">
         Autoverhuur Jansen is een autobedrijf die auto's verhuurd aan particulieren. Wilt u een auto huren? <br />Simpel, op de website, kom langs of neem contact
         met ons op!<br /> Tel. 06-12345678 of kom langs op Patatlaan 21, 2490BS Den Haag.
-    </p>    
-    <p>@Html.ActionLink("Huur nu!", "hier komt", "het pad naar verhuren")</p>
+    </p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>@Html.ActionLink("Huur nu!", "hier komt", "het pad naar verhuren")</p>
+    }
+    else
+    {
+        <p>@Html.ActionLink("Huur nu!", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</p>
+    }
 </div>
 
 <div class="row">
