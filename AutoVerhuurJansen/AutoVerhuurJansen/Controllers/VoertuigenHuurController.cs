@@ -31,13 +31,14 @@ namespace AutoVerhuurJansen.Controllers
 
             else
             {
-                startDate = DateTime.Now;
-                endDate = DateTime.Parse("01/01/9999 00:00");
+                //startDate = DateTime.Now;
+                //endDate = DateTime.Parse("01/01/9999 00:00");
 
-                var voertuigen = db.Voertuigen.Where(l => l.Verhuren.All(r => r.eindDatum <= startDate || r.beginDatum >= endDate));
+                //var voertuigen = db.Voertuigen.Where(l => l.Verhuren.All(r => r.eindDatum <= startDate || r.beginDatum >= endDate));
 
+                var listResult = new List<Voertuigen>();
 
-                return View(voertuigen);
+                return View(listResult);
             }
 
         }
