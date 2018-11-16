@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ReadyListController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\VerhuurLijjstController.cs" />
+    <Compile Include="Controllers\VoertuigenHuurController.cs" />
     <Compile Include="Controllers\VoertuigenLijstController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -377,6 +378,11 @@
     <Content Include="Views\Activity\Deactivate.cshtml" />
     <Content Include="Views\Activity\Index.cshtml" />
     <Content Include="Views\Account\Inactive.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Delete.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Details.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Edit.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Index.cshtml" />
+    <Content Include="Views\VoertuigenHuur\Rent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

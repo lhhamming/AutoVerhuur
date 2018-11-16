@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoVerhuurJansen.Models;
+using Microsoft.AspNet.Identity;
 
 namespace AutoVerhuurJansen.Controllers
 {
@@ -15,10 +16,48 @@ namespace AutoVerhuurJansen.Controllers
         private DB_Jansen db = new DB_Jansen();
 
         // GET: VoertuigenHuur
-        public ActionResult Index()
+        public ActionResult Index(DateTime? startDate, DateTime? endDate)
         {
-            var voertuigen = db.Voertuigen.Include(v => v.Categorie);
-            return View(voertuigen.ToList());
+
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                //var lodges = db.lodges.Where(c => !db.reserverings.Select(b => b.lodgeID).Contains(c.lodgeID));
+                var voertuigen = db.Voertuigen.Where(l => l.Verhuren.All(r => r.eindDatum <= startDate || r.beginDatum >= endDate));
+
+
+
+                return View(voertuigen);
+            }
+
+            else
+            {
+                startDate = DateTime.Now;
+                endDate = DateTime.Parse("01/01/9999 00:00");
+
+                var voertuigen = db.Voertuigen.Where(l => l.Verhuren.All(r => r.eindDatum <= startDate || r.beginDatum >= endDate));
+
+
+                return View(voertuigen);
+            }
+
+        }
+
+        public ActionResult Reserveer(string id, DateTime startDate, DateTime endDate)
+        {
+
+            var userID = db.Klanten.Where(k => k.AspNetUserID == User.Identity.GetUserId()).FirstOrDefault();
+
+
+            if (ModelState.IsValid)
+            {
+
+                var huur = new Verhuren() { klantId = userID.klantId, kenteken = id, beginDatum = startDate, eindDatum = endDate, afgehandeld = false};
+                db.Verhuren.Add(huur);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
 
         // GET: VoertuigenHuur/Details/5
