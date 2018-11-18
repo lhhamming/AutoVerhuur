@@ -50,12 +50,15 @@
 
         @if (User.IsInRole("Medewerker"))
     {
+        <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
         <li>@Html.ActionLink("Bereid Lijst", "Index", "ReadyList")</li>
+        <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
 }
 
         @if (User.IsInRole("Klant"))
     {
         <li>@Html.ActionLink("Verander Gebruikerinfo", "ChangeKlantinfo", "Manage")</li>
+        <li>@Html.ActionLink("Huur een auto", "Index", "VoertuigenHuur")</li>
 }
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
     </div>
