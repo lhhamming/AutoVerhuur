@@ -66,10 +66,52 @@ namespace AutoVerhuurJansen.Controllers
 
             string afkStringRes = afkString.ToUpper() + afkString2.ToUpper();
 
-            CurrentMw.voornaam = model.voornaam;
-            CurrentMw.achternaam = model.achternaam;
-            CurrentMw.tussenvoegsel = model.tussenvoegsel;
-            CurrentMw.afkorting = afkStringRes;
+            var legevoornaam = model.voornaam;
+            var legeachternaam = model.achternaam;
+            var legetussenvoegsel = model.tussenvoegsel;
+            var legeafkorting = afkString;
+
+            //Als het velt voornaam leeg is word de huidige voornaam behouden
+            if (legevoornaam.Equals(""))
+            {
+                CurrentMw.voornaam = CurrentMw.voornaam;
+            }
+            else
+            {
+                CurrentMw.voornaam = model.voornaam;
+            }
+
+            if (legeachternaam.Equals(""))
+            {
+                CurrentMw.achternaam = CurrentMw.achternaam;
+            }
+            else
+            {
+                CurrentMw.achternaam = model.achternaam;
+            }
+
+            if (legetussenvoegsel.Equals(""))
+            {
+                CurrentMw.tussenvoegsel = CurrentMw.tussenvoegsel;
+            }
+            else
+            {
+                CurrentMw.tussenvoegsel = model.tussenvoegsel;
+            }
+
+            if (legeafkorting.Equals(""))
+            {
+                CurrentMw.afkorting = CurrentMw.afkorting;
+            }
+            else
+            {
+                CurrentMw.afkorting = afkStringRes;
+            }
+
+
+            //CurrentMw.achternaam = model.achternaam;
+            //CurrentMw.tussenvoegsel = model.tussenvoegsel;
+            //CurrentMw.afkorting = afkStringRes;
 
             db.SaveChanges();
 
