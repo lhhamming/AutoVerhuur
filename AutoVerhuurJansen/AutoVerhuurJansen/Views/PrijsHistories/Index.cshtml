@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AutoVerhuurJansen.Models.PrijsHistorie>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Prijscategorieën</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.beginDatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eindDatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prijsPerDag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorie.categorieNaam)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.beginDatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eindDatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prijsPerDag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie.categorieNaam)
+        </td>
+        <td>
+            @Html.ActionLink("Prijs Wijzigen", "ChangePrice", new { id = item.prijsCategorieId })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.prijsCategorieId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prijsCategorieId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prijsCategorieId })*@
+        </td>
+    </tr>
+}
+
+</table>

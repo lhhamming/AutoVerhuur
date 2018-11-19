@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MedewerkersController.cs" />
     <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\PrijsHistoriesController.cs" />
     <Compile Include="Controllers\ReadyListController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\VerhuurLijjstController.cs" />
@@ -388,6 +389,12 @@
     <Content Include="Views\VoertuigenHuur\Edit.cshtml" />
     <Content Include="Views\VoertuigenHuur\Index.cshtml" />
     <Content Include="Views\VoertuigenHuur\Rent.cshtml" />
+    <Content Include="Views\PrijsHistories\Create.cshtml" />
+    <Content Include="Views\PrijsHistories\Delete.cshtml" />
+    <Content Include="Views\PrijsHistories\Details.cshtml" />
+    <Content Include="Views\PrijsHistories\Edit.cshtml" />
+    <Content Include="Views\PrijsHistories\Index.cshtml" />
+    <Content Include="Views\PrijsHistories\ChangePrice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -423,7 +430,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50422</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

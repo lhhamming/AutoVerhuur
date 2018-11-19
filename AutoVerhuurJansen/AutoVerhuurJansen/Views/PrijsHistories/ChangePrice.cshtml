@@ -1,0 +1,46 @@
+﻿@model AutoVerhuurJansen.Models.PrijsHistorie
+
+@{
+    ViewBag.Title = "PriceChange";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PriceChange</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>PrijsHistorie</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.prijsCategorieId)
+    @Html.HiddenFor(model => model.categorieId)
+    @Html.HiddenFor(model => model.beginDatum)
+    @Html.HiddenFor(model => model.prijsPerDag)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.prijsPerDag, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="number" value="0" name="newvalue" id="newvalue"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

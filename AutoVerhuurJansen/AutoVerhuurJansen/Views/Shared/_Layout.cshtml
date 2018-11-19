@@ -27,34 +27,39 @@
     <div class="sidenav">
         <li id="firstLi">@Html.ActionLink("Home", "Index", "Home")</li>
         @if (User.IsInRole("Manager"))
-        {
-            <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
-            <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
-            <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
-            <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
-            <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
-            <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
-        }
+    {
+        <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
+        <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
+        <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
+        <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
+        <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
+        <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
+        <li>@Html.ActionLink("Prijscategorieën", "Index", "PriceHistories") </li>
+}
 
         @if (User.IsInRole("Applicatiebeheerder"))
-        {
-            <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
-            <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
-            <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
-            <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
-            <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
-            <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
-        }
+    {
+        <li>@Html.ActionLink("Rollen Beheer ", "Index", "Roles") </li>
+        <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
+        <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
+        <li>@Html.ActionLink("Categorien", "Index", "Categorien")</li>
+        <li>@Html.ActionLink("Activiteit", "Index", "Activity")</li>
+        <li>@Html.ActionLink("Medewerkers", "Index", "Medewerkers")</li>
+        <li>@Html.ActionLink("Prijscategorieën", "Index", "PriceHistories") </li>
+}
 
         @if (User.IsInRole("Medewerker"))
-        {
-            <li>@Html.ActionLink("Bereid Lijst", "Index", "ReadyList")</li>
-        }
+    {
+        <li>@Html.ActionLink("VerhuurLijst", "Index", "VerhuurLijjst")</li>
+        <li>@Html.ActionLink("Bereid Lijst", "Index", "ReadyList")</li>
+        <li>@Html.ActionLink("Voertuigenlijst", "Index", "VoertuigenLijst")</li>
+}
 
         @if (User.IsInRole("Klant"))
-        {
-            <li>@Html.ActionLink("Verander Gebruikerinfo", "ChangeKlantinfo", "Manage")</li>
-        }
+    {
+        <li>@Html.ActionLink("Verander Gebruikerinfo", "ChangeKlantinfo", "Manage")</li>
+        <li>@Html.ActionLink("Huur een auto", "Index", "VoertuigenHuur")</li>
+}
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
     </div>
     <div class="container body-content">

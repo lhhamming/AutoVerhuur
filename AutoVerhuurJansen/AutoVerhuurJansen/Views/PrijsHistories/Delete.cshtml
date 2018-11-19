@@ -1,0 +1,57 @@
+﻿@model AutoVerhuurJansen.Models.PrijsHistorie
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PrijsHistorie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.beginDatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beginDatum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eindDatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eindDatum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prijsPerDag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prijsPerDag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorie.categorieNaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorie.categorieNaam)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
