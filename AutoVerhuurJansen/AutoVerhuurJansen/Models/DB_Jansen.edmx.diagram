@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.AspNetUsers" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.Categorie" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.Medewerkers" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.PrijsHistorie" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
@@ -19,14 +18,15 @@
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.fk_AspNetUserIDMedewerker" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_PrijsHistorie_Categorie" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_Voertuigen_Categorie" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_Verhuren_Medewerkers" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_Verhuren_Voertuigen" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.AspNetUserRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.Klanten" Width="1.5" PointX="5.25" PointY="22" />
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.fk_AspNetUserIDKlant" />
         <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_Verhuren_Klanten" />
+        <EntityTypeShape EntityType="DB_A42A9A_lhhammingModel.Categorie" Width="1.5" PointX="3" PointY="16.25" />
+        <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_PrijsHistorie_Categorie" />
+        <AssociationConnector Association="DB_A42A9A_lhhammingModel.FK_Voertuigen_Categorie" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -215,6 +215,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateCatVM.cs" />
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>DB_Jansen.tt</DependentUpon>
     </Compile>
@@ -308,6 +309,8 @@
     <Content Include="Models\DB_Jansen.edmx.diagram">
       <DependentUpon>DB_Jansen.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Linq;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
+using System.Linq;  
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +19,7 @@ namespace AutoVerhuurJansen.Controllers
         // GET: Categorien
         public ActionResult Index()
         {
+            ViewBag.doublename = null;
             return View(db.Categorie.ToList());
         }
 
@@ -46,13 +49,21 @@ namespace AutoVerhuurJansen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "categorieId,categorieNaam,aantalPersonen,aantalKoffers")] Categorie categorie)
+        public ActionResult Create([Bind(Include = "categorieId,categorieNaam,aantalPersonen,aantalKoffers,categorieprijs")] Categorie categorie)
         {
             if (ModelState.IsValid)
             {
-                db.Categorie.Add(categorie);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.Categorie.Add(categorie);
+                    try{
+                    db.SaveChanges();
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        ViewBag.doublename = "There is already an item with that name. Please use a different one";
+                        return View();
+                    }
+                    return RedirectToAction("Index");
+
             }
 
             return View(categorie);

@@ -1,4 +1,4 @@
-﻿@model AutoVerhuurJansen.Models.CreateCatVM
+﻿@model AutoVerhuurJansen.Models.CreateCateVM
 
 @{
     ViewBag.Title = "Create";
@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    <h2 class="alert">@ViewBag.doublename</h2>
     <div class="form-horizontal">
         <h4>Categorie</h4>
         <hr />
@@ -40,10 +40,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.prijsPerDag, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.categorieprijs, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.prijsPerDag, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.prijsPerDag, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.categorieprijs, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.categorieprijs, "", new { @class = "text-danger" })
             </div>
         </div>
 

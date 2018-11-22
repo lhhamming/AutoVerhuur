@@ -82,7 +82,7 @@ namespace AutoVerhuurJansen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "kenteken,categorieId,merk,type,Actief")] Voertuigen voertuigen)
+        public ActionResult Edit([Bind(Include = "kenteken,categorieId,Actief")] Voertuigen voertuigen)
         {
             if (ModelState.IsValid)
             {

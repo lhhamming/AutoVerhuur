@@ -26,8 +26,8 @@ namespace AutoVerhuurJansen.Models
         public string type { get; set; }
         public bool Actief { get; set; }
     
-        public virtual Categorie Categorie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Verhuren> Verhuren { get; set; }
+        public virtual Categorie Categorie { get; set; }
     }
 }

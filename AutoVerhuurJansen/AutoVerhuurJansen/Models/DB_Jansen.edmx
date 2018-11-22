@@ -407,17 +407,6 @@
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="Klanten" Relationship="DB_A42A9A_lhhammingModel.fk_AspNetUserIDKlant" FromRole="AspNetUsers" ToRole="Klanten" />
         </EntityType>
-        <EntityType Name="Categorie">
-          <Key>
-            <PropertyRef Name="categorieId" />
-          </Key>
-          <Property Name="categorieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="categorieNaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="aantalPersonen" Type="Int32" Nullable="false" />
-          <Property Name="aantalKoffers" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PrijsHistorie" Relationship="Self.FK_PrijsHistorie_Categorie" FromRole="Categorie" ToRole="PrijsHistorie" />
-          <NavigationProperty Name="Voertuigen" Relationship="Self.FK_Voertuigen_Categorie" FromRole="Categorie" ToRole="Voertuigen" />
-        </EntityType>
         <EntityType Name="Medewerkers">
           <Key>
             <PropertyRef Name="medewerkerId" />
@@ -441,7 +430,7 @@
           <Property Name="beginDatum" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="eindDatum" Type="DateTime" Precision="0" />
           <Property Name="prijsPerDag" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <NavigationProperty Name="Categorie" Relationship="Self.FK_PrijsHistorie_Categorie" FromRole="PrijsHistorie" ToRole="Categorie" />
+          <NavigationProperty Name="Categorie" Relationship="DB_A42A9A_lhhammingModel.FK_PrijsHistorie_Categorie" FromRole="PrijsHistorie" ToRole="Categorie" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -477,8 +466,8 @@
           <Property Name="merk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Actief" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Categorie" Relationship="Self.FK_Voertuigen_Categorie" FromRole="Voertuigen" ToRole="Categorie" />
           <NavigationProperty Name="Verhuren" Relationship="Self.FK_Verhuren_Voertuigen" FromRole="Voertuigen" ToRole="Verhuren" />
+          <NavigationProperty Name="Categorie" Relationship="DB_A42A9A_lhhammingModel.FK_Voertuigen_Categorie" FromRole="Voertuigen" ToRole="Categorie" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -520,30 +509,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PrijsHistorie_Categorie">
-          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
-          <End Role="PrijsHistorie" Type="Self.PrijsHistorie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categorie">
-              <PropertyRef Name="categorieId" />
-            </Principal>
-            <Dependent Role="PrijsHistorie">
-              <PropertyRef Name="categorieId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Voertuigen_Categorie">
-          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
-          <End Role="Voertuigen" Type="Self.Voertuigen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categorie">
-              <PropertyRef Name="categorieId" />
-            </Principal>
-            <Dependent Role="Voertuigen">
-              <PropertyRef Name="categorieId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Verhuren_Medewerkers">
           <End Role="Medewerkers" Type="Self.Medewerkers" Multiplicity="0..1" />
           <End Role="Verhuren" Type="Self.Verhuren" Multiplicity="*" />
@@ -578,7 +543,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="Categorie" EntityType="Self.Categorie" />
           <EntitySet Name="Medewerkers" EntityType="Self.Medewerkers" />
           <EntitySet Name="PrijsHistorie" EntityType="Self.PrijsHistorie" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -595,14 +559,6 @@
           <AssociationSet Name="fk_AspNetUserIDMedewerker" Association="Self.fk_AspNetUserIDMedewerker">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Medewerkers" EntitySet="Medewerkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PrijsHistorie_Categorie" Association="Self.FK_PrijsHistorie_Categorie">
-            <End Role="Categorie" EntitySet="Categorie" />
-            <End Role="PrijsHistorie" EntitySet="PrijsHistorie" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Voertuigen_Categorie" Association="Self.FK_Voertuigen_Categorie">
-            <End Role="Categorie" EntitySet="Categorie" />
-            <End Role="Voertuigen" EntitySet="Voertuigen" />
           </AssociationSet>
           <AssociationSet Name="FK_Verhuren_Medewerkers" Association="Self.FK_Verhuren_Medewerkers">
             <End Role="Medewerkers" EntitySet="Medewerkers" />
@@ -624,6 +580,15 @@
           <AssociationSet Name="FK_Verhuren_Klanten" Association="DB_A42A9A_lhhammingModel.FK_Verhuren_Klanten">
             <End Role="Klanten" EntitySet="Klanten" />
             <End Role="Verhuren" EntitySet="Verhuren" />
+          </AssociationSet>
+          <EntitySet Name="Categorie" EntityType="DB_A42A9A_lhhammingModel.Categorie" />
+          <AssociationSet Name="FK_PrijsHistorie_Categorie" Association="DB_A42A9A_lhhammingModel.FK_PrijsHistorie_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="PrijsHistorie" EntitySet="PrijsHistorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voertuigen_Categorie" Association="DB_A42A9A_lhhammingModel.FK_Voertuigen_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Voertuigen" EntitySet="Voertuigen" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Klanten">
@@ -663,6 +628,41 @@
             </Principal>
             <Dependent Role="Verhuren">
               <PropertyRef Name="klantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="categorieId" />
+          </Key>
+          <Property Name="categorieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categorieNaam" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aantalPersonen" Type="Int32" Nullable="false" />
+          <Property Name="aantalKoffers" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PrijsHistorie" Relationship="DB_A42A9A_lhhammingModel.FK_PrijsHistorie_Categorie" FromRole="Categorie" ToRole="PrijsHistorie" />
+          <NavigationProperty Name="Voertuigen" Relationship="DB_A42A9A_lhhammingModel.FK_Voertuigen_Categorie" FromRole="Categorie" ToRole="Voertuigen" />
+        </EntityType>
+        <Association Name="FK_PrijsHistorie_Categorie">
+          <End Type="DB_A42A9A_lhhammingModel.Categorie" Role="Categorie" Multiplicity="1" />
+          <End Type="DB_A42A9A_lhhammingModel.PrijsHistorie" Role="PrijsHistorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="categorieId" />
+            </Principal>
+            <Dependent Role="PrijsHistorie">
+              <PropertyRef Name="categorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voertuigen_Categorie">
+          <End Type="DB_A42A9A_lhhammingModel.Categorie" Role="Categorie" Multiplicity="1" />
+          <End Type="DB_A42A9A_lhhammingModel.Voertuigen" Role="Voertuigen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="categorieId" />
+            </Principal>
+            <Dependent Role="Voertuigen">
+              <PropertyRef Name="categorieId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -724,16 +724,6 @@
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categorie">
-            <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.Categorie">
-              <MappingFragment StoreEntitySet="Categorie">
-                <ScalarProperty Name="categorieId" ColumnName="categorieId" />
-                <ScalarProperty Name="categorieNaam" ColumnName="categorieNaam" />
-                <ScalarProperty Name="aantalPersonen" ColumnName="aantalPersonen" />
-                <ScalarProperty Name="aantalKoffers" ColumnName="aantalKoffers" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -816,6 +806,16 @@
                 <ScalarProperty Name="tussenvoegsel" ColumnName="tussenvoegsel" />
                 <ScalarProperty Name="voornaam" ColumnName="voornaam" />
                 <ScalarProperty Name="klantId" ColumnName="klantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorie">
+            <EntityTypeMapping TypeName="DB_A42A9A_lhhammingModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="aantalKoffers" ColumnName="aantalKoffers" />
+                <ScalarProperty Name="aantalPersonen" ColumnName="aantalPersonen" />
+                <ScalarProperty Name="categorieNaam" ColumnName="categorieNaam" />
+                <ScalarProperty Name="categorieId" ColumnName="categorieId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

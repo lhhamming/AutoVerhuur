@@ -30,12 +30,12 @@ namespace AutoVerhuurJansen.Models
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Categorie> Categorie { get; set; }
         public virtual DbSet<Medewerkers> Medewerkers { get; set; }
         public virtual DbSet<PrijsHistorie> PrijsHistorie { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Verhuren> Verhuren { get; set; }
         public virtual DbSet<Voertuigen> Voertuigen { get; set; }
         public virtual DbSet<Klanten> Klanten { get; set; }
+        public virtual DbSet<Categorie> Categorie { get; set; }
     }
 }
