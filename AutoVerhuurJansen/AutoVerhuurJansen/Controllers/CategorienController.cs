@@ -20,7 +20,8 @@ namespace AutoVerhuurJansen.Controllers
         public ActionResult Index()
         {
             ViewBag.doublename = null;
-            return View(db.Categorie.ToList());
+            var prijshistory = db.Categorie.Include(v => v.PrijsHistorie);
+            return View(prijshistory.ToList());
         }
 
         // GET: Categorien/Details/5

@@ -6,9 +6,18 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.IsInRole("Klant") || User.Identity.IsAuthenticated)
+{
+    <p>
+
+    </p>
+}
+else if(User.IsInRole("Applicatiebeheerder") || User.IsInRole("Manager"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -19,6 +28,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.aantalKoffers)
+        </th>
+        <th>
+            @Html.DisplayName("Prijs")
         </th>
         <th></th>
     </tr>
@@ -34,11 +46,25 @@
         <td>
             @Html.DisplayFor(modelItem => item.aantalKoffers)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.categorieId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.categorieId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.categorieId })
-        </td>
+        <th>
+            @{ 
+                var CurrentCatID = item.categorieId;
+                var ppd = item.PrijsHistorie.Where(p => p.categorieId == CurrentCatID).Select(p => p.prijsPerDag).FirstOrDefault();
+            }
+            @Html.DisplayFor(modelItem => ppd)
+        </th>
+        @if (User.IsInRole("Klant") || User.Identity.IsAuthenticated)
+        {
+            <td></td>
+        }
+        else if (User.IsInRole("Applicatiebeheerder") || User.IsInRole("Manager"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.categorieId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.categorieId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.categorieId })
+            </td>
+        }
     </tr>
 }
 
